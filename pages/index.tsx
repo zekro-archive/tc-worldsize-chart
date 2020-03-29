@@ -3,9 +3,10 @@ import { GetServerSideProps } from "next";
 import { IAPIProvider } from "../api/provider";
 import { CSVAPIProvider } from "../api/csv-provider";
 import { WorldSizeDataPoint } from "../models/worldsize";
-import { Line, ChartData } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import { ChartOptions, ChartDataSets } from 'chart.js';
 import moment from 'moment';
+import Header from "../components/header";
 
 const apiProvider: IAPIProvider = new CSVAPIProvider();
 
@@ -53,7 +54,10 @@ export default class Index extends Component<{ data: WorldSizeDataPoint[] }> {
       ]
     };
 
-    return <Line data={data} options={options}></Line>
+    return <div>
+      <Header></Header>
+      <Line data={data} options={options}></Line>
+    </div>;
   }
 
 }
